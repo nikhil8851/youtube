@@ -1,4 +1,17 @@
-import  watchVideo  from "/js/watch.js"
+
+// import watchVideo  from "./watch.js"
+
+
+var menuIcon = document.querySelector(".menu_icon")
+var sidebar = document.querySelector(".sidebar")
+var content = document.querySelector(".content")
+
+menuIcon.onclick =function(){
+    sidebar.classList.toggle("small-sidebar")
+    content.classList.toggle("large-content")
+    
+}
+
 
 
 let sampleData = {
@@ -1720,27 +1733,31 @@ let searchButton = document.querySelector("#search_btn")
 
 
 
-
-
+// part=snippet%2CcontentDetails&channelId=UCW5YeuERMmlnqo4oq8vwUpg&maxResults=100&key=AIzaSyCAhxJav3emHDVp6UbDlP8ntYfl49u6vMM&
+//
+// https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=UCW5YeuERMmlnqo4oq8vwUpg&maxResults=100&key=AIzaSyCAhxJav3emHDVp6UbDlP8ntYfl49u6vMM&
+//
 searchButton.addEventListener("click", function (e) {
     e.preventDefault()
     console.log("clicked")
     let searchTerm = searchResults.value
 
     let urlobj = {
-        key: "<KEY>",
+        key: "AIzaSyCAhxJav3emHDVp6UbDlP8ntYfl49u6vMM",
         part: "snippet",
         q: searchTerm,
-        maxResults: 10
+        maxResults: 100
     }
     let { key, part, q, maxResults } = urlobj;
-    fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=${part}&q=${q}&type=${type}&maxResults=${maxResults}`)
+    fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=${part}&q=${q}&maxResults=${maxResults}`)
         .then(response => response.json())
         .then(data => {
             displayResults(data.items)
         })
         .catch(error => console.log(error))
 })
+
+
 
 
 function displayResults(results) {
@@ -1758,6 +1775,7 @@ function displayResults(results) {
 
         let atag = document.createElement("a")
         let imgtag = document.createElement("img")
+        imgtag.style.width = "100%"
         atag.appendChild(imgtag)
         vid_list.appendChild(atag)
 
@@ -1788,6 +1806,9 @@ function displayResults(results) {
             console.log("clicked")
             localStorage.setItem('currentVideo', JSON.stringify(videoId))
             location.href = 'watch.html'
+        //   hVideo()  watc
+          
+           
 
 
         })
@@ -1796,7 +1817,6 @@ function displayResults(results) {
 
 
 displayResults(sampleData.items)
-watchVideo()
 
 
 

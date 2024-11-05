@@ -26,7 +26,8 @@ buttton.addEventListener("click" , (e) =>{
     fetch("https://instagram-express-app.vercel.app/api/auth/login",{
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        // "authrization": "",
       },
       body: JSON.stringify(userdata)
 

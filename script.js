@@ -1,6 +1,7 @@
 // this is login.js file in this file i write logic for authentication of user in this i use  authentication api
 //for check user vaild or not if user vaild then redirect to index.html page
 
+//
 let usermail = document.getElementById("usermail");
 let password = document.getElementById("passwordinput");
 let buttton = document.getElementById("submitbtn");
@@ -43,3 +44,4 @@ buttton.addEventListener("click" , (e) =>{
     })
       .catch(error => console.log(error))
 })
+//
